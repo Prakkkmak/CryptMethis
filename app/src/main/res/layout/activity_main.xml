@@ -12,8 +12,8 @@
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
@@ -86,10 +86,26 @@
         android:layout_height="wrap_content"
         android:text="@string/encrypt_button"
         android:id="@+id/button"
-        android:layout_marginBottom="24dp"
         android:layout_above="@+id/adView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/decrypt_button"
+        android:id="@+id/button2"
+        android:layout_below="@+id/encrypted_text_text"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copy_button"
+        android:id="@+id/button3"
+        android:layout_below="@+id/encrypted_text_text"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>
