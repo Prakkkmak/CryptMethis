@@ -2,6 +2,7 @@ package com.lambdacompany.cryptmethis;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,13 +46,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+    public int Reverse(int number){
+        int n = number;
+        number=0;
+        while(n!=0){
+            number=number*10;
+            number = number+ n%10;
+            n = n/10;
+        }
+        return number;
+    }
     public String Encrypt(int encrypter_number, String str){
+        encrypter_number = Reverse(encrypter_number);
         StringBuilder encrypted_result = new StringBuilder(str);
         int init_encrypter_number = encrypter_number; // Initialisation du nombre de départ
         int code; // chiffre éctrait à chaque fois ( Pour 458 on aura 4 , 5 , 8)
 
-        char new_char;
+        char new_char = '0';
 
         for(int i=0;i<encrypted_result.toString().length();i++){
             if (encrypter_number ==0){ // Pour reinitialiser le nombre
@@ -59,7 +70,16 @@ public class MainActivity extends AppCompatActivity {
             }
             code = encrypter_number%10;// On prend le code
             encrypter_number/=10;//On on transforme le nombre
-            new_char = (char)((int)(encrypted_result.toString().toCharArray()[i])+code);// Definition du nouveau char
+            Log.d("CODE",Integer.toString(code));
+            Log.d("ENCRYPTER_NUMBER",Integer.toString(encrypter_number));
+            new_char = (char)((int)(encrypted_result.toString().toCharArray()[i]));
+            for(int j=0;j<code;j++){// Definition du nouveau char
+                new_char = (char)((int)new_char+1);
+                Log.d("CHAR",Character.toString(new_char));//Affichage du char
+                Log.d("CHAR",Integer.toString((int)new_char));//Affichage du char id ASCII
+                if((int)new_char == 91){new_char=(char)65;}//On reviens au début de l'alphabet
+                if((int)new_char == 123){new_char=(char)97;}//On reviens au début de l'alphabet
+            }
             encrypted_result.setCharAt(i,new_char);//Positionement du char
         }
         return encrypted_result.toString();
