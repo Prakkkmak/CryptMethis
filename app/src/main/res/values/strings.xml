@@ -5,4 +5,6 @@
     <string name="encrypt_text">Entrez le texte à crypter:</string>
     <string name="encrypted_text">Résultat:</string>
     <string name="encrypt_button">Crypter !</string>
+    <string name="decrypt_button">Dérypter !</string>
+    <string name="copy_button">Copier</string>
 </resources>
