@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialisations
         but = (Button)findViewById(R.id.button);
-        encrypted_result = (TextView)findViewById(R.id.textView3);
+        encrypted_result = (TextView)findViewById(R.id.encrypted_text_text);
 
         but.setOnClickListener(new View.OnClickListener(){//Le listener du clic
             @Override
@@ -78,13 +78,9 @@ public class MainActivity extends AppCompatActivity {
             }
             code = encrypter_number%10;// On prend le code
             encrypter_number/=10;//On on transforme le nombre
-            Log.d("CODE",Integer.toString(code));
-            Log.d("ENCRYPTER_NUMBER",Integer.toString(encrypter_number));
             new_char = (char)((int)(encrypted_result.toString().toCharArray()[i]));
             for(int j=0;j<code;j++){// Definition du nouveau char
                 new_char = (char)((int)new_char+1);
-                Log.d("CHAR",Character.toString(new_char));//Affichage du char
-                Log.d("CHAR",Integer.toString((int)new_char));//Affichage du char id ASCII
                 if((int)new_char == 91){new_char=(char)65;}//On reviens au début de l'alphabet
                 if((int)new_char == 123){new_char=(char)97;}//On reviens au début de l'alphabet
                 //TODO activer le space ? 
