@@ -121,12 +121,14 @@ public class MainActivity extends AppCompatActivity {
             }
             code = encrypter_number%10;// On prend le code
             encrypter_number/=10;//On on transforme le nombre
-            new_char = (char)((int)(encrypted_result.toString().toCharArray()[i]));
-            for(int j=0;j<code;j++){// Definition du nouveau char
-                new_char = (char)((int)new_char+ mode_nbr);
-                if((int)new_char == 91){new_char=(char)65;}//On reviens au début de l'alphabet
-                if((int)new_char == 123){new_char=(char)97;}//On reviens au début de l'alphabet
+            new_char = (encrypted_result.toString().toCharArray()[i]);
+            if(" ,;.?!:()'<>€$éèàôû1234567890/*-+".indexOf(new_char) == -1){//On ne modifie pas ces chars
+                for(int j=0;j<code;j++){// Definition du nouveau char
+                    new_char = (char)((int)new_char+ mode_nbr);
+                    if((int)new_char == 91){new_char=(char)65;}//On reviens au début de l'alphabet
+                    if((int)new_char == 123){new_char=(char)97;}//On reviens au début de l'alphabet
 
+                }
             }
             encrypted_result.setCharAt(i,new_char);//Positionement du char
         }
